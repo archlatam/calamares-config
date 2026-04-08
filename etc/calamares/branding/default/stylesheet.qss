@@ -1,0 +1,259 @@
+/*
+ * SPDX-FileCopyrightText: no
+ * SPDX-License-Identifier: CC0-1.0
+ * Core Calamares Theme - Modified for KDE Plasma and Logo Fix
+ */
+
+/*------------------------ Global & Background -----------------*/
+
+QWidget {
+    background-color: #282c34;
+    font: 12px;
+    color: #EFF0F1;
+}
+
+#mainApp { 
+    background-color: #282c34;
+}
+
+/* --- UNIFICACIÓN DE COLOR IZQUIERDO --- */
+/* Usamos #282c34 en todo para que el logo "desaparezca" en el fondo */
+
+#sidebarApp {
+    background-color: #282c34; /* Antes era #353945, por eso se veía el parche */
+}
+
+#sidebarMenuApp {
+    padding: 5px;
+    background-color: #282c34;
+}
+
+/* --- SOLUCIÓN PARA EL LOGO CON FONDO TRANSPARENTE --- */
+#logoApp {
+    padding: 0px;
+    background-color: #282c34; /* Fondo sólido igual que el resto de la interfaz */
+}
+
+/*------------------------ Bottom Buttons -----------------*/
+
+#debugButton, #aboutButton {
+    border-style: solid;
+    font: 12px;
+    padding: 8px;
+}
+
+QDialogButtonBox {
+    dialogbuttonbox-buttons-have-icons: 0;
+}
+
+/* --- ESTILO BOTONES PLASMA DARK (Retroceder, Siguiente, Cancelar) --- */
+#view-button-back,
+#view-button-next,
+#view-button-cancel {
+    /* Degradado sutil para dar volumen */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                      stop:0 #454a54, stop:1 #31363b);
+    border: 1px solid #1c2023;
+    border-radius: 3px;
+    color: #eff0f1;
+    font: 12px;
+    min-width: 5em;
+    padding: 6px 15px; /* Más ancho para aspecto de sistema */
+    
+   /* --- CORRECCIÓN: ÍCONOS BLANCOS --- */
+   /* Esta propiedad fuerza a que los íconos internos sean blancos */
+   qproperty-icon-color: #ffffff;
+}
+
+/* Estado Hover (Resplandor azul de Plasma) */
+#view-button-back:hover,
+#view-button-next:hover,
+#view-button-cancel:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                      stop:0 #3daee9, stop:1 #297797);
+    border: 1px solid #1d99f3;
+    color: #ffffff;
+    qproperty-icon-color: #ffffff;
+}
+
+/* Estado Pressed (Efecto hundimiento) */
+#view-button-back:pressed,
+#view-button-next:pressed,
+#view-button-cancel:pressed {
+    background-color: #2a2e32;
+    border: 1px solid #1d99f3;
+    padding-top: 7px;
+    padding-bottom: 5px;
+}
+
+/* Estado Disabled */
+#view-button-back:disabled,
+#view-button-next:disabled,
+#view-button-cancel:disabled {
+    background-color: #31363b;
+    border: 1px solid #232629;
+    color: #7f8c8d;
+}
+
+/*------------------------ Welcome Page Elements ------------------------*/
+
+#aboutButton {   
+    qproperty-icon: url(/etc/calamares/branding/default/icons/about.svg);
+}
+
+#debugButton {   
+    qproperty-icon: url(/etc/calamares/branding/default/icons/about.svg);
+}
+
+#donateButton, #supportButton, #releaseNotesButton, #knownIssuesButton {
+    font: 12px;
+    min-width: 2em;
+    padding: 8px;
+}
+
+#debugButton:hover, #aboutButton:hover, #donateButton:hover, 
+#supportButton:hover, #releaseNotesButton:hover, #knownIssuesButton:hover {
+    color: #5294E2;
+    border-style: solid;
+    border-width: 0px;
+}
+
+QLabel#mainText {
+    color: #5294E2;
+    font: 14px; /* Un poco más grande para el título */
+    font-weight: bold;
+}
+
+/*------------------------ Dropdown (QComboBox) ------------------------*/
+
+QComboBox {
+    background-color: #373b43;
+    border: 1px solid #252931;
+    border-radius: 4px;
+    padding: 6px;
+    min-width: 20em;
+}
+
+QComboBox:on { 
+    border: 1px solid #5294E2;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left-width: 1px;
+    border-left-color: #2D303B;
+    border-left-style: solid;
+}
+
+QComboBox::down-arrow {
+    image: url(/etc/calamares/branding/default/icons/go-down.svg);
+}
+
+/* Estilo para la lista que se despliega (IMPORTANTE) */
+QComboBox QAbstractItemView {
+    background-color: #282c34;
+    border: 1px solid #5294E2;
+    selection-background-color: #5294E2;
+    selection-color: #ffffff;
+    outline: none;
+}
+
+/*------------------------ ScrollBar (Mejorado) ------------------------*/
+
+/* Barra Vertical */
+QScrollBar:vertical {
+    background: #1e2128;
+    border: none;
+    width: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #4f5b71; /* Color visible */
+    border-radius: 5px;
+    min-height: 30px;
+    margin: 2px; /* Efecto flotante */
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #3daee9; /* Azul Breeze */
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px; /* Elimina las flechas feas */
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Barra Horizontal */
+QScrollBar:horizontal {
+    background: #1e2128;
+    border: none;
+    height: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #4f5b71;
+    border-radius: 5px;
+    min-width: 30px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #3daee9; /* Azul Breeze */
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/*------------------------ Partition Page ------------------------*/
+
+#partitionBarView {
+    background-color: #1E2128;
+    border: 1px solid #2D303B;
+    min-height: 40px;
+    margin: 5px;
+}
+
+QScrollArea, QListWidget {
+    background-color: #282c34;
+    border: 1px solid #2D303B;
+    color: #FFFFFF;
+}
+
+QListWidget::item {
+    background-color: #282c34;
+    padding: 5px;
+    color: #abb2bf;
+}
+
+QListWidget::item:selected {
+    background-color: #373b43;
+    border: 1px solid #5294E2;
+    color: #5294E2;
+}
+
+/*------------------------ Input Fields ------------------------*/
+
+QLineEdit {
+    background-color: #373b43;
+    border: 1px solid #252931;
+    padding: 6px;
+    border-radius: 2px;
+}
+
+/*------------------------ Tooltip ------------------------*/
+
+QToolTip {
+    background-color: #353945;
+    color: #EFF0F1;
+    border: 1px solid #5294E2;
+    border-radius: 2px;
+    padding: 2px;
+}
