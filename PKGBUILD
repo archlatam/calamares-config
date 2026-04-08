@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 
-source=("${pkgname}::git+${url}#commit=HEAD")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 package() {
