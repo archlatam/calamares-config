@@ -1,7 +1,7 @@
 pkgbase = calamares-config
 	pkgdesc = Calamares configuration for Arch Linux Plasma
 	pkgver = 2.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/archlatam/calamares-config
 	arch = any
 	license = custom
