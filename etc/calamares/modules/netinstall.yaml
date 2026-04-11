@@ -34,11 +34,12 @@
         - limine-snapper-sync
 - name: "CoreOS Packages"
   description: "needed CoreOS packages"
-  hidden: false
+  hidden: true
   selected: true
   critical: true
   packages:
     - coreos-settings
+    - fastfetch
 - name: "Base-devel + Common packages"
   description: "Recommended. Don't change unless you know what you're doing (generic)."
   hidden: false
@@ -128,7 +129,7 @@
         - zip
     - name: "fonts"
       description: "Core font selection"
-      selected: false
+      selected: true
       packages:
         - awesome-terminal-fonts
         - noto-fonts-emoji
@@ -211,7 +212,6 @@
     - core-icons
     - core-settings-kde
     - dolphin
-    - fastfetch
     - ffmpegthumbs
     - filelight
     - fwupd
@@ -257,7 +257,6 @@
   selected: false
   critical: true
   packages:
-    - fastfetch
     - fwupd
     - gdm
     - gedit
