@@ -34,12 +34,20 @@
         - limine-snapper-sync
 - name: "CoreOS Packages"
   description: "needed CoreOS packages"
-  hidden: false
+  hidden: true
   selected: true
   critical: true
   packages:
     - coreos-settings
-    - coreos-grub-theme
+    - fastfetch
+- name: "kernel"
+  description: "Otro kernel"
+  hidden: false
+  selected: false
+  critical: false
+  packages:
+    - linux-lts
+    - linux-lts-headers
 - name: "Base-devel + Common packages"
   description: "Recommended. Don't change unless you know what you're doing (generic)."
   hidden: false
@@ -129,7 +137,7 @@
         - zip
     - name: "fonts"
       description: "Core font selection"
-      selected: false
+      selected: true
       packages:
         - awesome-terminal-fonts
         - noto-fonts-emoji
@@ -188,7 +196,6 @@
         - meld
         - nano
         - nano-syntax-highlighting
-        - fastfetch
         - pv
         - python-defusedxml
         - python-packaging
@@ -211,9 +218,8 @@
     - breeze-gtk
     - core-wallpapers
     - core-icons
-    - core-skel-kde
+    - core-settings-kde
     - dolphin
-    - fastfetch
     - ffmpegthumbs
     - filelight
     - fwupd
@@ -259,7 +265,6 @@
   selected: false
   critical: true
   packages:
-    - fastfetch
     - fwupd
     - gdm
     - gedit
@@ -299,7 +304,7 @@
           - gvfs-mtp
 - name: "Cosmic"
   description: "Linux desktop, which provides an environment that features advanced functionality and a responsive design."
-  hidden: false
+  hidden: true
   selected: false
   critical: true
   packages:
