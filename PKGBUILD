@@ -2,8 +2,8 @@
 
 pkgname=calamares-config
 pkgver=2.1
-pkgrel=14
-pkgdesc="Calamares configuration for Arch Linux Plasma"
+pkgrel=15
+pkgdesc="Calamares configuration for Core Linux Plasma"
 arch=('any')
 url="https://github.com/archlatam/calamares-config"
 license=('custom')
