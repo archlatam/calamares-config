@@ -40,20 +40,18 @@
   packages:
     - coreos-settings
     - fastfetch
-- name: "kernel"
-  description: "Otro kernel"
-  hidden: false
-  selected: false
-  critical: false
-  packages:
-    - linux-lts
-    - linux-lts-headers
 - name: "Base-devel + Common packages"
   description: "Recommended. Don't change unless you know what you're doing (generic)."
   hidden: false
   selected: true
   critical: true
   subgroups:
+    - name: "kernel"
+      description: "kernel Lts"
+      selected: false
+      packages:
+        - linux-lts
+        - linux-lts-headers
     - name: "X-system"
       description: "Default X-system"
       selected: true
@@ -302,42 +300,8 @@
           - gvfs-smb
           - gvfs-gphoto2
           - gvfs-mtp
-- name: "Cosmic"
-  description: "Linux desktop, which provides an environment that features advanced functionality and a responsive design."
-  hidden: true
-  selected: false
-  critical: true
-  packages:
-    - cosmic-app-library
-    - cosmic-applets
-    - cosmic-bg
-    - cosmic-comp
-    - cosmic-files
-    - cosmic-greeter
-    - cosmic-icon-theme
-    - cosmic-launcher
-    - cosmic-notifications
-    - cosmic-osd
-    - cosmic-panel
-    - cosmic-player
-    - cosmic-randr
-    - cosmic-screenshot
-    - cosmic-session
-    - cosmic-settings
-    - cosmic-settings-daemon
-    - cosmic-terminal
-    - cosmic-text-editor
-    - cosmic-wallpapers
-    - cosmic-workspaces
-    - notification-daemon
-    - cosmic-greeter
-    - plymouth
-    - plymouth-kcm
-    - plymouth-theme-core
-    - xdg-desktop-portal-cosmic
-    - xorg-xwayland
 - name: "Drivers NVIDIA"
-  hidden: false
+  hidden: true
   selected: false
   critical: false
   packages:
@@ -355,7 +319,7 @@
   description: "Install LibreOffice with language support"
   hidden: false
   expanded: false
-  selected: true
+  selected: false
   critical: false
   packages:
     - libreoffice-fresh
