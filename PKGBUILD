@@ -2,7 +2,7 @@
 
 pkgname=calamares-config
 pkgver=2.1
-pkgrel=15
+pkgrel=16
 pkgdesc="Calamares configuration for Core Linux Plasma"
 arch=('any')
 url="https://github.com/archlatam/calamares-config"

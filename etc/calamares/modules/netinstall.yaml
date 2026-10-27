@@ -249,7 +249,7 @@
     - plasma-workspace
     - plymouth
     - plymouth-kcm
-    - plymouth-theme-core
+    - plymouth-theme-corelinux
     - powerdevil
     - qt6-wayland
     - plasma-login-manager
@@ -278,7 +278,7 @@
     - core-icons
     - plymouth
     - plymouth-kcm
-    - plymouth-theme-core
+    - plymouth-theme-corelinux
   subgroups:
       - name: "GNOME Apps"
         description: "Additional software from the GNOME project"
