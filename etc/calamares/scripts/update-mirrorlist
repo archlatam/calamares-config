@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Ordena la mirrorlist de la ISO live con reflector antes de instalar.
+# Si algo falla, se conserva la mirrorlist original y no se corta la instalación.
+
+MIRRORLIST=/etc/pacman.d/mirrorlist
+BACKUP=/tmp/mirrorlist.orig
+NEW=$(mktemp /tmp/mirrorlist.XXXXXX) || exit 0
+
+# Limpiar el temporal al terminar, incluso si hay errores.
+trap 'rm -f "$NEW"' EXIT
+
+# Guardar una copia de la mirrorlist original.
+if ! cp -f "$MIRRORLIST" "$BACKUP"; then
+    echo "No se pudo guardar la mirrorlist original."
+    exit 0
+fi
+
+if ! command -v reflector >/dev/null 2>&1; then
+    echo "reflector no está instalado; se mantiene la mirrorlist actual."
+    exit 0
+fi
+
+# Comprobar la conexión antes de consultar los mirrors.
+if ! curl -fsS --max-time 5 -o /dev/null https://archlinux.org; then
+    echo "Sin conexión a archlinux.org; se mantiene la mirrorlist actual."
+    exit 0
+fi
+
+if timeout 90 reflector \
+    --country US,BR,BE,ES,IT,FR,DE \
+    --protocol https \
+    --age 24 \
+    --latest 30 \
+    --sort score \
+    --number 10 \
+    --download-timeout 5 \
+    --save "$NEW" \
+    && [ "$(grep -c '^Server' "$NEW")" -ge 3 ]; then
+
+    if install -m 644 "$NEW" "$MIRRORLIST"; then
+        echo "Mirrorlist actualizada:"
+        grep '^Server' "$MIRRORLIST"
+    else
+        echo "No se pudo instalar la nueva mirrorlist."
+        echo "Se intenta restaurar la original."
+        cp -f "$BACKUP" "$MIRRORLIST"
+    fi
+else
+    echo "Reflector falló o devolvió menos de 3 mirrors."
+    echo "Se mantiene la mirrorlist actual."
+fi
+
+exit 0
+
