@@ -305,9 +305,11 @@
   selected: false
   critical: false
   packages:
-    - nvidia
+    - nvidia-open-dkms
     - nvidia-utils
     - nvidia-settings
+    - lib32-nvidia-utils
+    - libva-nvidia-driver
 - name: "Firefox"
   description: "Add firefox"
   hidden: false
